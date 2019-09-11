@@ -10,8 +10,8 @@
             "request": "launch",
             "name": "Node Nodemon Debugg",
             "program": "${workspaceFolder}/app.js",
-            "restart": true,
             "runtimeExecutable": "nodemon",
+            "restart": true,
             "console": "integratedTerminal"
         }
     ]
