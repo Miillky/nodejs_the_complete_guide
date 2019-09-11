@@ -1,11 +1,12 @@
 {
   "name": "nodejs_the_complete_guide",
   "version": "1.0.0",
-  "description": "Complete Node.js Guide",
+  "description": "Node.js The Complete Guide",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "nodemon app.js",
+    "start-server": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/Miillky/nodejs_the_complete_guide/issues"
   },
-  "homepage": "https://github.com/Miillky/nodejs_the_complete_guide#readme"
+  "homepage": "https://github.com/Miillky/nodejs_the_complete_guide#readme",
+  "devDependencies": {
+    "nodemon": "^1.19.2"
+  }
 }
