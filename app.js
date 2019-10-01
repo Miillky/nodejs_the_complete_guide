@@ -2,6 +2,8 @@ const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 
+const errorController = require('./controllers/error');
+
 const app = express();
 
 // Register template engine's
@@ -26,7 +28,8 @@ app.set('view engine', 'ejs');
 app.set('views', 'views'); // compile templates with puck as views (default) in foolder views
 
 //const adminRoutes = require('./routes/admin');
-const adminData = require('./routes/admin');
+//const adminData = require('./routes/admin');
+const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 
 // Parses req.body (has next included to go to next route)
@@ -36,14 +39,12 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 // Uses all adminRoutes (order matters if route.use is used, not post or get)
 //app.use( '/admin', adminRoutes);
-app.use( '/admin', adminData.routes)
+//app.use( '/admin', adminData.routes);
+app.use( '/admin', adminRoutes );
 // Uses all shopRoutes (order matters if route.use is used, not post or get)
 app.use(shopRoutes);
 
 // If no match in routes it will go to default '/' and display a 404 page
-app.use((req, res, next) => {
-	//res.status(404).sendFile(path.join(__dirname, 'views', '404.html'));
-	res.status(404).render('404', { pageTitle: 'Page Not Found' } );
-})
+app.use(errorController.get404)
 
 app.listen(3000)
